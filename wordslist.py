@@ -14,8 +14,8 @@ words = (
 
     "chameleon", "crocodile", "chimpanzee", "salamander", "barracuda",
     "wolverine", "narwhal", "platypus", "armadillo", "rhinoceros",
-    "orangutan", "roadrunner", "porcupine", "axolotl", "cockatoo",
+    "roadrunner", "porcupine", "axolotl", "cockatoo",
     "tarantula", "albatross", "alligator", "bumblebee", "centipede",
     "dragonfly", "flamingo", "hedgehog", "jellyfish", "kingfisher",
-    "manatee", "mongoose", "pangolin", "scorpion", "secretary bird",
+    "manatee", "mongoose", "pangolin", "scorpion"
 )
