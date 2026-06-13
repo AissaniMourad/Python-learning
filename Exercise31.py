@@ -1,4 +1,4 @@
-# Exercise PyQt5 checkboxes
+# Exercise PyQt5 radio buttons
 
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QRadioButton, QButtonGroup
