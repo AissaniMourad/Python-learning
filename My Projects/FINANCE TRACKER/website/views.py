@@ -15,7 +15,12 @@ def dashboard():
     expenses = sum(t.amount for t in transactions if t.type == "expense")
     balance = round(income - expenses, 2)
 
-    return render_template("dashboard.html", transactions=transactions, income=income, expenses=expenses, balance=balance, user=current_user)
+    categories = {}
+    for t in transactions:
+        if t.type == "expense":
+            categories[t.category] = categories.get(t.category, 0) + t.amount
+
+    return render_template("dashboard.html", transactions=transactions, income=income, expenses=expenses, balance=balance, categories=categories, user=current_user)
 
 
 @views.route('/add-transaction', methods=['GET', 'POST'])
@@ -34,3 +39,14 @@ def add_transaction():
         flash("Transaction added!", category='success')
         return redirect(url_for('views.dashboard'))
     return render_template("add_transaction.html", user=current_user)
+
+
+@views.route('/delete-transaction/<int:id>', methods=['POST'])
+@login_required
+def delete_transaction(id):
+    transaction = Transaction.query.get(id)
+    if transaction.user_id == current_user.id:
+        db.session.delete(transaction)
+        db.session.commit()
+        flash("Transaction deleted!", category='seccess')
+    return redirect(url_for('views.dashboard'))
